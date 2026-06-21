@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时时彩 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce5cd 0%, #f6d5b3 30%, #efc9a0 70%, #e6b888 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #2e241d;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffcf8;
+            border-radius: 42px;
+            padding: 3rem 2.8rem;
+            box-shadow: 0 16px 48px rgba(120, 70, 40, 0.18), 0 6px 16px rgba(180, 110, 60, 0.12);
+            transition: box-shadow 0.25s ease;
+            border: 1px solid rgba(255, 240, 225, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .card {
+                padding: 2.2rem 1.5rem;
+                border-radius: 32px;
+            }
+        }
+
+        /* 标题区 */
+        .hero-tag {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b07a5a;
+            background: #f3e3d3;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            margin-bottom: 1.6rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            color: #3f2c1f;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+        }
+
+        .opening {
+            font-size: 1.2rem;
+            color: #5b4232;
+            border-left: 4px solid #dba47b;
+            padding-left: 1.2rem;
+            margin: 1.6rem 0 1.8rem 0;
+            background: #faf1e7;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.6;
+        }
+
+        /* 正文段落 */
+        p {
+            margin-bottom: 1.3rem;
+            font-size: 1.02rem;
+        }
+
+        .highlight-link {
+            color: #a15f34;
+            font-weight: 550;
+            text-decoration: none;
+            border-bottom: 2px solid #dba47b;
+            transition: background 0.2s, color 0.2s;
+            padding: 0 2px;
+            border-radius: 3px;
+        }
+
+        .highlight-link:hover {
+            background: #dba47b;
+            color: #2a1b12;
+            border-bottom-color: #8f552f;
+        }
+
+        /* 特点卡片组 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.8rem 0 1.6rem 0;
+        }
+
+        .feature-item {
+            background: #f9ede2;
+            padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+            border-radius: 24px;
+            border: 1px solid #e7d3bf;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(150, 90, 55, 0.1);
+            background: #f6e6d7;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #4a3223;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #5e4a3b;
+        }
+
+        @media (max-width: 550px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 提示框 */
+        .note-box {
+            background: #e6d2bd;
+            border-radius: 30px;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
+            border-left: 6px solid #b27b56;
+            color: #2d1f15;
+        }
+
+        .note-box p {
+            margin-bottom: 0.2rem;
+        }
+
+        .note-box strong {
+            color: #4e2f1b;
+        }
+
+        /* FAQ 摘要 */
+        .faq-block {
+            margin: 2rem 0 0.8rem 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px dashed #dac2ae;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #3e2a1c;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .faq-q::before {
+            content: "▹";
+            color: #b27b56;
+            font-weight: bold;
+        }
+
+        .faq-a {
+            margin-left: 1.5rem;
+            color: #5a4334;
+            font-size: 0.97rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 温和结尾 */
+        .closing-note {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid #eddccc;
+            font-size: 0.98rem;
+            color: #5b4536;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .closing-note small {
+            opacity: 0.75;
+        }
+
+        .btn-soft {
+            display: inline-block;
+            background: #b27b56;
+            color: #fcf5ed;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 530;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 8px rgba(140, 80, 40, 0.15);
+            border: none;
+            cursor: default;
+        }
+
+        .btn-soft:hover {
+            background: #9b6844;
+            transform: scale(1.01);
+            box-shadow: 0 6px 14px rgba(130, 70, 30, 0.2);
+        }
+
+        .dot-sep {
+            color: #b9947a;
+            margin: 0 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="hero-tag">✦ 简明导航</div>
+        <h1>关于<span style="color:#8f552f;">时时彩</span> · 一份认真整理过的说明</h1>
+
+        <div class="opening">
+            开始之前，先了解它的基础轮廓，再慢慢接触具体规则与节奏。
+        </div>
+
+        <p>
+            如果你是第一次听说“时时彩”，或者已经听过但想系统地理清脉络，下面这些内容可以作为一个温和的起点。
+            <a href="https://game-ssc.com" class="highlight-link">时时彩</a> 是一种基于数字选择的游戏形式，每一定时间开奖一次，节奏较快，因此提前熟悉基本设定会很有帮助。
+        </p>
+
+        <p>
+            很多新接触的朋友容易把注意力只放在结果上，却忽略了结构本身其实有清晰的层次。下面把几个核心特点整理出来，方便对照。
+        </p>
+
+        <!-- 特点列表 -->
+        <div class="features-grid">
+            <div class="feature-item">
+                <strong>⏱ 固定开奖周期</strong>
+                <span>每期时长一致，间隔规律，方便提前规划参与节奏。</span>
+            </div>
+            <div class="feature-item">
+                <strong>🔢 数字范围明确</strong>
+                <span>每位数字从 0–9 中选择，组合理清之后更容易理解。</span>
+            </div>
+            <div class="feature-item">
+                <strong>📋 多种组合方式</strong>
+                <span>从简单直选到组选、跨度、大小等，各有不同逻辑。</span>
+            </div>
+            <div class="feature-item">
+                <strong>🧭 入门门槛不高</strong>
+                <span>不需要复杂计算，理解基础术语后即可开始尝试。</span>
+            </div>
+        </div>
+
+        <p>
+            看到这里，你可能会想：“是不是有什么需要特别注意的？” 确实，正因为节奏偏快，保持清醒的认知和节奏感尤其重要。
+        </p>
+
+        <!-- 提示单元：访问提醒角度 -->
+        <div class="note-box">
+            <p><strong>📌 访问提醒</strong></p>
+            <p>
+                建议通过稳定的网络环境访问，页面加载时请耐心等待几秒。如果遇到显示异常或提示更新，可以稍后刷新重试。另外，任何游戏都建议先设置好自己的参与计划，避免因连续关注而产生疲劳感。
+            </p>
+        </div>
+
+        <p>
+            下面摘录几个常见问题，虽然不是全部，但能覆盖大部分刚接触时的疑惑。
+        </p>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-block">
+            <div class="faq-item">
+                <div class="faq-q">开奖结果在哪里看比较可靠？</div>
+                <div class="faq-a">通常官方网站会直接公布每期结果，以页面显示为准。第三方数据站点请自行核对时效性。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否支持历史数据查询？</div>
+                <div class="faq-a">大多数平台提供近期的走势和记录，但不同页面保留的期数长度不一样，可以按需查看。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">需要注册或下载东西吗？</div>
+                <div class="faq-a">浏览基本信息和开奖结果通常不需要额外注册，但部分功能或提醒服务可能需要简单设置。</div>
+            </div>
+        </div>
+
+        <p style="margin-top:0.8rem;">
+            如果你已经对基础有了印象，不妨直接去感受一下页面结构和信息呈现方式。
+            <a href="https://game-ssc.com" class="highlight-link">时时彩</a> 的界面以清晰为主，数字和选项都放在明显位置，多看两眼自然就熟悉了。
+        </p>
+
+        <!-- 温和结尾 -->
+        <div class="closing-note">
+            <div>
+                <span class="btn-soft" role="button">🔍 了解基础</span>
+                <span style="margin-left: 0.8rem; font-size:0.9rem;">一步步来，比什么都重要。</span>
+            </div>
+            <small>整理于近期 · 内容仅供参考</small>
+        </div>
+
+        <!-- 装饰脚标（纯视觉） -->
+        <div style="margin-top: 1.2rem; text-align: right; font-size: 0.7rem; color: #ba9a82; letter-spacing: 1px;">
+            — 指南 · 不构成任何建议 —
+        </div>
+    </div>
+</body>
+</html>
