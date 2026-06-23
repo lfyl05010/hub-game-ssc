@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国体彩 · 资料索引 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.65;
+            padding: 2rem 1rem;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 头部标识区 */
+        .site-header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .site-header h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #1e2a3a;
+        }
+
+        .site-header p {
+            margin-top: 0.5rem;
+            color: #5b6f82;
+            font-size: 1.05rem;
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 1.2rem;
+        }
+
+        /* 网格卡片布局 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            padding: 1.8rem 1.5rem 2rem;
+            transition: box-shadow 0.25s ease, transform 0.15s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transform: translateY(-2px);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+            color: #1e2a3a;
+            border-left: 4px solid #c00e26;
+            padding-left: 0.75rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 1.2rem 0 0.4rem;
+            color: #2c3e50;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #3e4d5e;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.6rem;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #b22234;
+            font-weight: bold;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #f0f2f5;
+            border: 1px solid #d0d7de;
+            border-radius: 100px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            color: #2c3e50;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-item {
+            margin-top: 1rem;
+            border-top: 1px dashed #dce3eb;
+            padding-top: 0.9rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #1e2a3a;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #4a5a6e;
+        }
+
+        .notice-block {
+            background: #f7f9fb;
+            border-left: 4px solid #b22234;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin: 0.8rem 0 0;
+        }
+
+        .notice-block p {
+            font-size: 0.9rem;
+            color: #3e4d5e;
+        }
+
+        .inline-link {
+            color: #b22234;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #b22234;
+        }
+
+        .full-width-card {
+            grid-column: 1 / -1;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7b8b9d;
+            border-top: 1px solid #dce3eb;
+            padding-top: 2rem;
+        }
+
+        .footer-note a {
+            color: #7b8b9d;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-note a:hover {
+            color: #b22234;
+        }
+
+        /* 小屏优化 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+            .site-header h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.4rem 1rem 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <header class="site-header">
+        <h1>体彩资料 · 信息索引卡</h1>
+        <p>从知识整理的角度，梳理与 <a href="https://root-lottery.com" class="inline-link">中国体彩</a> 相关的公开信息、常见说明与参考方向。</p>
+    </header>
+
+    <div class="card-grid">
+        <!-- 卡片 1：资料说明区 -->
+        <div class="card">
+            <h2>📋 资料说明</h2>
+            <p>本页以知识库入口形式，整合关于<strong>中国体彩</strong>的基本背景、游戏类型与信息来源。所有内容均基于公开资料整理，供研究、索引与一般性了解使用。</p>
+            <p style="margin-top:0.8rem;">当前收录方向包括：玩法概述、术语简释、相关机构与公开文件索引。资料持续增补，保持克制与准确。</p>
+            <div class="tag-list">
+                <span class="tag">乐透型</span>
+                <span class="tag">竞猜型</span>
+                <span class="tag">即开型</span>
+                <span class="tag">高频</span>
+            </div>
+        </div>
+
+        <!-- 卡片 2：提示区 -->
+        <div class="card">
+            <h2>🧭 提示</h2>
+            <div class="notice-block">
+                <p>彩票发行与销售受国家严格监管。本文档仅作为信息索引，不构成任何购买建议或收益承诺。参与者应基于自身判断，理性对待。</p>
+            </div>
+            <p style="margin-top:0.8rem;">如需获取最新官方公告、开奖信息或政策文件，可直接参考<a href="https://root-lottery.com" class="inline-link">中国体彩</a>的官方发布渠道。</p>
+            <div style="margin-top:0.6rem; background:#f7f9fb; border-radius:6px; padding:0.5rem 0.8rem; font-size:0.85rem; color:#4a5a6e;">
+                <span>🔍 建议使用关键词组合检索，例如：“游戏规则”、“资金分配”、“公益金”等。</span>
+            </div>
+        </div>
+
+        <!-- 卡片 3：相关信息区 -->
+        <div class="card">
+            <h2>📎 相关信息</h2>
+            <ul>
+                <li>国家体育总局体育彩票管理中心</li>
+                <li>彩票管理条例及实施细则</li>
+                <li>公益金使用公告（年度）</li>
+                <li>游戏规则与返奖率说明</li>
+                <li>实体店与代销者规范</li>
+            </ul>
+            <p style="margin-top:0.7rem; font-size:0.85rem; color:#5b6f82;">以上信息均可通过<a href="https://root-lottery.com" class="inline-link">中国体彩</a>相关页面进一步查阅。</p>
+        </div>
+
+        <!-- 卡片 4：FAQ 摘要 (横跨两列) -->
+        <div class="card full-width-card">
+            <h2>❓ 常见问题摘要</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="faq-item">
+                    <strong>体彩公益金主要用途？</strong>
+                    <p>根据《彩票公益金管理办法》，专项用于社会福利、体育事业、补充全国社会保障基金等。具体分配比例每年由财政部公告。</p>
+                </div>
+                <div class="faq-item">
+                    <strong>开奖时间如何查询？</strong>
+                    <p>每种游戏均有固定开奖日程，可通过<a href="https://root-lottery.com" class="inline-link">中国体彩</a>的官方开奖页面获取最新结果。部分游戏每日多次开奖。</p>
+                </div>
+                <div class="faq-item">
+                    <strong>是否支持线上购买？</strong>
+                    <p>根据现行规定，禁止擅自利用互联网销售彩票。所有正规购买均须通过经批准的实体代销网点。线上仅提供信息展示与查询。</p>
+                </div>
+                <div class="faq-item">
+                    <strong>中奖后如何兑奖？</strong>
+                    <p>单注奖金1万元以下可在代销网点兑付；超过1万元须持身份证至地市级或以上体彩中心办理。兑奖期限一般为开奖之日起60个自然日。</p>
+                </div>
+            </div>
+            <p style="margin-top:1rem; font-size:0.9rem; color:#5b6f82; border-top:1px solid #e2e8f0; padding-top:0.8rem;">
+                更多细节与官方解释，建议直接访问 <a href="https://root-lottery.com" class="inline-link">中国体彩</a> 的“常见问题”或“帮助中心”板块。
+            </p>
+        </div>
+
+        <!-- 卡片 5：场景方向 -->
+        <div class="card">
+            <h2>🧩 参考场景</h2>
+            <ul>
+                <li>资料整理：收集规则、历史开奖与术语</li>
+                <li>学术观察：分析公益金流向与政策演变</li>
+                <li>信息核实：对比不同来源的公告数据</li>
+                <li>入门了解：认识体彩游戏基本类型</li>
+            </ul>
+        </div>
+
+        <!-- 卡片 6：目录感入口 -->
+        <div class="card">
+            <h2>📂 目录索引</h2>
+            <ul>
+                <li>乐透数字型 · 游戏规则</li>
+                <li>竞猜型 · 赛事与赔率说明</li>
+                <li>即开型 · 票面与兑奖</li>
+                <li>视频型 · 历史与现状</li>
+                <li>基诺型 · 开奖频率</li>
+            </ul>
+            <p style="margin-top:0.7rem; font-size:0.85rem;">每个分类下均有对应条目，可结合 <a href="https://root-lottery.com" class="inline-link">中国体彩</a> 站内导航深入浏览。</p>
+        </div>
+    </div>
+
+    <footer class="footer-note">
+        <p>本页面为知识库入口，内容仅供参考，不具法律效力。具体信息以官方发布为准。</p>
+        <p style="margin-top:0.3rem;">
+            <a href="https://root-lottery.com">中国体彩</a> · 信息索引 · 持续更新
+        </p>
+    </footer>
+</div>
+</body>
+</html>
